@@ -4,7 +4,9 @@ const wss = new WebSocket.Server({ port: 6001 });
 
 wss.on("connection", (ws) => {
   console.log("New client connected");
-  ws.send("Welcome New Client");
+
+  // Send a welcome message to the newly connected client
+  ws.send("Welcome! Connection successful.");
 
   ws.on("message", (message) => {
     console.log(`Received: ${message}`);
