@@ -64,23 +64,17 @@ export default function Home() {
       <div className="flex-grow w-full flex justify-center items-center">
         <div className="w-1/4 h-full">
           <Button Icon={ArrowLeft} onPress={Right} onRelease={Stop} />
-          <Button
+          <ButtonOneClick
             Icon={Flashlight}
             color="bg-yellow-500"
             onPress={Light}
-            onRelease={Nothing}
           />
           <Button Icon={ArrowRight} onPress={Left} onRelease={Stop} />
         </div>
         <VideoScreen />
         <div className="w-1/4 h-full">
           <Button Icon={ArrowUp} onPress={Forward} onRelease={Stop} />
-          <Button
-            Icon={Hand}
-            color="bg-red-500"
-            onPress={Stop}
-            onRelease={Nothing}
-          />
+          <ButtonOneClick Icon={Hand} color="bg-red-500" onPress={Stop} />
           <Button Icon={ArrowDown} onPress={Backward} onRelease={Stop} />
         </div>
       </div>
@@ -130,6 +124,29 @@ const Button = ({
       onMouseUp={onRelease}
       onTouchStart={onPress}
       onTouchEnd={onRelease}
+    >
+      <div
+        className={`w-[90%] h-[90%] ${color} rounded-lg flex items-center justify-center !text-white`}
+      >
+        <Icon className="w-[8vw] h-[8vw] !text-white" />
+      </div>
+    </div>
+  );
+};
+
+const ButtonOneClick = ({
+  Icon,
+  color = "bg-blue-600",
+  onPress = () => {},
+}: {
+  Icon: any;
+  color?: string;
+  onPress?: any;
+}) => {
+  return (
+    <div
+      className="w-full h-1/3 flex items-center justify-center"
+      onClick={onPress}
     >
       <div
         className={`w-[90%] h-[90%] ${color} rounded-lg flex items-center justify-center !text-white`}
