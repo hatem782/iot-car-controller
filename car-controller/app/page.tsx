@@ -57,10 +57,46 @@ export default function Home() {
     sendCommand("LIGHT");
   };
 
-  const Nothing = () => {};
+  useEffect(() => {
+    const keyMappings = [
+      { key: "z", onPress: Forward, onRelease: Stop },
+      { key: "s", onPress: Backward, onRelease: Stop },
+      { key: "d", onPress: Left, onRelease: Stop },
+      { key: "q", onPress: Right, onRelease: Stop },
+      { key: "a", onPress: Light, onRelease: Light },
+      { key: "e", onPress: Stop, onRelease: Stop },
+    ];
+
+    const pressedKeys = new Set();
+
+    const handleKeyDown = (event: any) => {
+      const keyObj = keyMappings.find((k) => k.key === event.key.toLowerCase());
+      if (keyObj && !pressedKeys.has(event.key)) {
+        pressedKeys.add(event.key);
+        console.log("Key Pressed:", event.key);
+        if (keyObj.onPress) keyObj.onPress();
+      }
+    };
+    const handleKeyUp = (event: any) => {
+      const keyObj = keyMappings.find((k) => k.key === event.key.toLowerCase());
+      if (keyObj) {
+        pressedKeys.delete(event.key);
+        console.log("Key Released:", event.key);
+        if (keyObj.onRelease) keyObj.onRelease();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [ws]);
 
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center">
+    <div className="w-full h-screen flex flex-col justify-center items-center bg-white">
       <div className="flex-grow w-full flex justify-center items-center">
         <div className="w-1/4 h-full">
           <Button Icon={ArrowLeft} onPress={Right} onRelease={Stop} />
