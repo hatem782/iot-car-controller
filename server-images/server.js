@@ -12,11 +12,11 @@ wss.on("connection", (ws) => {
     console.log(`📷 Received image (${message.length} bytes)`);
 
     // ✅ Forward image to all connected clients
-    wss.clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(message);
-      }
-    });
+    // wss.clients.forEach((client) => {
+    //   if (client.readyState === WebSocket.OPEN) {
+    //     client.send(message);
+    //   }
+    // });
   });
 
   ws.on("close", () => console.log("❌ Client disconnected"));
