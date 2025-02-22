@@ -19,8 +19,6 @@ wss.on("connection", (ws) => {
       return;
     }
 
-    console.log(`📷 Received image (${message.length} bytes)`);
-
     // ✅ Forward image only to Next.js clients
     clients.forEach((client) => {
       if (client.readyState === WebSocket.OPEN) {

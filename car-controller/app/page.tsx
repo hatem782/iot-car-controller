@@ -11,6 +11,7 @@ import {
   Hand,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import VideoScreen from "./VideoScreen";
 
 const SERVER_URL = "ws://51.38.49.42:6001/";
 
@@ -188,17 +189,6 @@ const ButtonOneClick = ({
         className={`w-[90%] h-[90%] ${color} rounded-lg flex items-center justify-center !text-white`}
       >
         <Icon className="w-[8vw] h-[8vw] !text-white" />
-      </div>
-    </div>
-  );
-};
-
-const VideoScreen = () => {
-  return (
-    <div className="w-2/4 h-full flex items-center justify-center">
-      <div className="w-[98%] h-[96.5%] bg-blue-600 rounded-lg flex flex-col items-center justify-center">
-        <Camera className="text-white w-[30vw] h-[30vw]" />
-        <h1 className="text-white font-bold text-[5vw]">COMING SOON</h1>
       </div>
     </div>
   );
