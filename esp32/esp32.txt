@@ -1,9 +1,9 @@
 #include <WiFi.h>
 #include <WebSocketsClient.h>
 
-const char* ssid = "Redmi 10C"; //"TOPNET_6298";
-const char* password =  "123456789"; // "vp7pmsm1rh";
-const char* serverAddress = "51.38.49.42"; // Change to your PC's IP
+const char* ssid = "-------"; //"WIFI-NAME";
+const char* password =  "--------"; // "WIFI-PASSWORD";
+const char* serverAddress = "--------"; // SERVER IP
 const int serverPort = 6001;
 
 WebSocketsClient webSocket;
